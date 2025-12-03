@@ -16,7 +16,7 @@ import { api } from '../services/api';
 import type { Track, TrailResponse } from '../types';
 
 const CarouselSection = styled.section`
-  padding: 40px 0 80px;
+  padding: 40px 0 20px;
   background: transparent;
   position: relative;
   z-index: 1;
