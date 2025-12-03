@@ -55,6 +55,8 @@ export interface TrailResponse {
   results?: Trail[];
 }
 
+export type Track = Trail;
+
 // Weather types
 export interface WeatherData {
   city: string;

@@ -1,54 +1,49 @@
 import styled from 'styled-components';
+import { TrilhasCarousel } from '../components/TrilhasCarousel';
 
 const HomeContainer = styled.main`
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 40px 20px;
-  min-height: 60vh;
+  width: 100%;
+  position: relative;
+  background-color: var(--bege);
+  
+  /* Subtle Pattern Background */
+  background-image: radial-gradient(var(--verde-medio) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: 0 0, 20px 20px;
 
-  @media (max-width: 768px) {
-    padding: 30px 15px;
+  /* Decorative Blurred Circles */
+  &::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(47, 219, 31, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
   }
-`;
 
-const WelcomeSection = styled.section`
-  text-align: center;
-  margin-bottom: 60px;
-
-  h2 {
-    color: var(--verde-escuro);
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-
-    @media (max-width: 768px) {
-      font-size: 2rem;
-    }
-  }
-
-  p {
-    font-size: 1.2rem;
-    color: #555;
-    max-width: 800px;
-    margin: 0 auto;
-    line-height: 1.8;
-
-    @media (max-width: 768px) {
-      font-size: 1.1rem;
-    }
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -100px;
+    left: -100px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(13, 175, 22, 0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
   }
 `;
 
 export function Home() {
   return (
     <HomeContainer>
-      <WelcomeSection>
-        <h2>Bem-vindo ao Green Trail</h2>
-        <p>
-          Explore trilhas ecológicas incríveis na Região dos Lagos. Descubra rotas
-          desafiadoras, paisagens deslumbrantes e conecte-se com a natureza.
-        </p>
-      </WelcomeSection>
-      {/* Trail carousel and map components will be added here */}
+      <TrilhasCarousel />
+      {/* Map component will be added here */}
     </HomeContainer>
   );
 }

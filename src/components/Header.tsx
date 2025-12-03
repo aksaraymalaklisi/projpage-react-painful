@@ -34,7 +34,6 @@ const HeaderSection = styled.header`
   padding: 110px 0 140px;
   text-align: center;
   clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-  margin-bottom: -50px;
   position: relative;
   overflow: hidden;
 
@@ -150,7 +149,7 @@ export function Header() {
         </Badge>
         <HeaderTitle>Green Trail</HeaderTitle>
         <HeaderDesc>
-          Descubra rotas incríveis em meio à natureza preservada. 
+          Descubra rotas incríveis em meio à natureza preservada.
           O seu guia definitivo para explorar a Região dos Lagos.
         </HeaderDesc>
       </HeaderContainer>
