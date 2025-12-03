@@ -1,0 +1,69 @@
+/* Global styles and CSS variables */
+:root {
+  --verde-escuro: #08420b;
+  --verde-medio: #0daf16;
+  --verde-claro: #2fdb1f;
+  --bege: #f8f4e3;
+  --branco: #ffffff;
+  --sombra: 0 4px 6px rgba(0, 0, 0, 0.1);
+  
+  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bege);
+  color: #333;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Utility classes */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.btn {
+  display: inline-block;
+  background: var(--verde-medio);
+  color: var(--branco);
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background 0.3s ease;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: var(--verde-escuro);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid var(--verde-medio);
+  color: var(--verde-medio);
+}
+
+.btn-outline:hover {
+  background: var(--verde-medio);
+  color: var(--branco);
+}
+
