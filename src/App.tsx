@@ -18,7 +18,7 @@ import './styles/index.css';
 function App() {
   return (
     <AuthProvider>
-      <BrowserRouter>
+      <BrowserRouter basename={import.meta.env.BASE_URL}>
         <ScrollToTop />
         <Navbar />
         <Chatbot />
