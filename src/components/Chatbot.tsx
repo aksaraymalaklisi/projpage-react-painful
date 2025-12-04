@@ -178,7 +178,8 @@ export function Chatbot() {
       // Connect to WebSocket
       const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
       // Use current host (which includes port) - Vite proxy will handle the forwarding in dev
-      const host = window.location.host;
+      // "Gambiarra" applied
+      const host = `${import.meta.env.VITE_API_BASE_URL.replace(/^https?:\/\//, '').replace(/\/api\/?$/, '')}`;
 
       // Get token from localStorage directly since useAuth might not expose it directly depending on implementation
       // Assuming api.ts stores it in localStorage 'access_token'
