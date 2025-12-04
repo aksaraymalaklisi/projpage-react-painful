@@ -645,7 +645,7 @@ export function Navbar({ onLoginClick }: NavbarProps) {
         {/* Mobile: Top row with logo and hamburger */}
         <TopRow>
           <MobileLogo to="/" onClick={() => setIsMobileMenuOpen(false)}>
-            <img src="/favicon.png" alt="Green Trail" />
+            <img src={`${import.meta.env.BASE_URL}favicon.png`} alt="Green Trail" />
             <span>Green Trail</span>
           </MobileLogo>
 
@@ -696,7 +696,7 @@ export function Navbar({ onLoginClick }: NavbarProps) {
 
         {/* Desktop: Logo (hidden on mobile) */}
         <Logo to="/" onClick={() => setIsMobileMenuOpen(false)}>
-          <img src="/favicon.png" alt="Green Trail" />
+          <img src={`${import.meta.env.BASE_URL}favicon.png`} alt="Green Trail" />
           <span>Green Trail</span>
         </Logo>
 
