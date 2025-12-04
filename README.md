@@ -1,99 +1,98 @@
-# Projpage React - Hiking Trails Application
+# Painful - Aplicação de Trilhas
 
-A modern React 19 + TypeScript application for displaying and managing hiking trails in Maricá, Rio de Janeiro.
+Uma aplicação moderna em React 19 + TypeScript para exibir e gerenciar trilhas de caminhada em Maricá, Rio de Janeiro.
 
-## Features
+## Funcionalidades
 
-- 🗺️ Interactive maps with GPX track visualization
-- 🎠 3D carousel for trail display
-- 🌤️ Weather integration
-- 👤 User authentication and profiles
-- ⭐ Favorites system
-- 👥 Community features
+- 🗺️ Mapas interativos com visualização de trilhas GPX
+- 🤖 Chatbot com IA para assistência e informações sobre trilhas
+- 🔐 Autenticação de usuário segura e perfis
+- 🎠 Carrossel 3D para exibição de trilhas
+- 🌤️ Integração com previsão do tempo (Removido)
+- ⭐ Sistema de favoritos
+- 👥 Funcionalidades de comunidade
 
-## Tech Stack
+## Tecnologias Utilizadas
 
-- **React 19.2.0** - UI library
-- **TypeScript** - Type safety
-- **Vite 7.2.4** - Build tool
-- **React Router** - Routing
-- **Styled Components** - CSS-in-JS
-- **Leaflet** - Interactive maps
-- **React Leaflet** - React bindings for Leaflet
+- **React 19.2.0** - Biblioteca de UI
+- **TypeScript** - Tipagem estática
+- **Vite 7.2.4** - Ferramenta de build
+- **React Router** - Roteamento
+- **Styled Components** - Estilização CSS-in-JS
+- **Leaflet & React Leaflet** - Mapas interativos
+- **React Markdown** - Renderização de mensagens do bot
+- **React Icons** - Ícones vetoriais
 
-## Getting Started
+## Como instalar
 
-### Prerequisites
+### Pré-requisitos
 
-- Node.js 18+ and npm
+- Node.js 18+ e npm
 
-### Installation
+### Instalação
 
-1. Install dependencies:
+1. Instale as dependências:
 ```bash
 npm install
 ```
 
-2. Create a `.env` file (copy from `.env.example`):
+2. Crie um arquivo `.env` (copie do `.env.example`):
 ```bash
 cp .env.example .env
 ```
 
-3. Update the `.env` file with your API keys:
+3. Atualize o arquivo `.env` com suas chaves de API:
 ```
 VITE_API_BASE_URL=https://painful.aksaraymalaklisi.net/api/
-VITE_OPENWEATHER_API_KEY=your_api_key_here
 ```
 
-### Development
+### Desenvolvimento
 
-Start the development server:
+Inicie o servidor de desenvolvimento:
 ```bash
 npm run dev
 ```
 
-The app will be available at `http://localhost:3000`
+A aplicação estará disponível em `http://localhost:5173` (ou a porta definida pelo Vite).
 
 ### Build
 
-Build for production:
+Compilar para produção:
 ```bash
 npm run build
 ```
 
-Preview production build:
+Visualizar o build de produção:
 ```bash
 npm run preview
 ```
 
-## Project Structure
+## Estrutura do Projeto
 
 ```
 src/
-├── components/     # Reusable UI components
-├── pages/         # Page components
-├── hooks/         # Custom React hooks
-├── services/     # API services and clients
-├── types/         # TypeScript type definitions
-├── utils/         # Utility functions
-├── styles/        # Global styles
-└── assets/        # Static assets
+├── components/     # Componentes de UI reutilizáveis (incluindo Chatbot)
+├── pages/         # Componentes de página (Login, Register, Home, etc.)
+├── hooks/         # Hooks customizados do React
+├── services/     # Serviços de API e clientes
+├── context/       # Contextos do React (AuthContext)
+├── types/         # Definições de tipos TypeScript
+├── utils/         # Funções utilitárias
+├── styles/        # Estilos globais
+└── assets/        # Ativos estáticos
 ```
 
-## API Integration
+## Integração com API e Chatbot
 
-The application uses a centralized API client (`src/services/api.ts`) that handles:
-- Authentication token management
-- Automatic token refresh
-- Error handling
-- Request/response interceptors
+A aplicação utiliza um cliente de API centralizado (`src/services/api.ts`) que gerencia:
+- Tokens de autenticação (JWT)
+- Refresh automático de tokens
+- Interceptação de erros
 
-## Environment Variables
+### Chatbot
+O Chatbot conecta-se via WebSocket para fornecer assistência em tempo real. Ele requer que o usuário esteja logado para ser acessado.
 
-- `VITE_API_BASE_URL` - Backend API base URL
-- `VITE_OPENWEATHER_API_KEY` - OpenWeatherMap API key
-- `VITE_ENV` - Environment mode (development/production)
+## Variáveis de Ambiente
 
-## License
-
-MIT
+- `VITE_API_BASE_URL` - URL base da API Backend
+- `VITE_ENV` - Modo do ambiente (development/production)

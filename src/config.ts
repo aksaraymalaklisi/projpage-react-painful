@@ -14,7 +14,7 @@ const getApiBaseUrl = (): string => {
     // Otherwise, use the full URL
     return import.meta.env.VITE_API_BASE_URL || '/api/';
   }
-  
+
   // Production: always use full URL
   return import.meta.env.VITE_API_BASE_URL || 'https://painful.aksaraymalaklisi.net/api/';
 };
@@ -22,10 +22,6 @@ const getApiBaseUrl = (): string => {
 export const config = {
   api: {
     baseUrl: getApiBaseUrl().endsWith('/') ? getApiBaseUrl() : `${getApiBaseUrl()}/`,
-  },
-  weather: {
-    apiKey: import.meta.env.VITE_OPENWEATHER_API_KEY || '',
-    baseUrl: 'https://api.openweathermap.org/data/2.5',
   },
   env: {
     isDev: import.meta.env.DEV,
