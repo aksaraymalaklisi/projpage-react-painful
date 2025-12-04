@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { FaSun, FaCloud, FaCloudRain, FaSnowflake, FaBolt, FaSmog, FaWind, FaTint } from 'react-icons/fa';
+import { FaSun, FaCloud, FaCloudRain, FaSnowflake, FaBolt, FaSmog, FaWind } from 'react-icons/fa';
 
 const WidgetContainer = styled.div`
   position: absolute;
@@ -82,66 +82,66 @@ const LocationName = styled.div`
 `;
 
 interface WeatherData {
-    temperature: number;
-    weathercode: number;
-    windspeed: number;
+  temperature: number;
+  weathercode: number;
+  windspeed: number;
 }
 
 export function WeatherWidget() {
-    const [weather, setWeather] = useState<WeatherData | null>(null);
-    const [loading, setLoading] = useState(true);
+  const [weather, setWeather] = useState<WeatherData | null>(null);
+  const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        const fetchWeather = async () => {
-            try {
-                // Maricá Coordinates
-                const res = await fetch(
-                    'https://api.open-meteo.com/v1/forecast?latitude=-22.9194&longitude=-42.8186&current_weather=true'
-                );
-                const data = await res.json();
-                setWeather(data.current_weather);
-            } catch (error) {
-                console.error('Failed to fetch weather:', error);
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchWeather();
-
-        // Refresh every 30 mins
-        const interval = setInterval(fetchWeather, 30 * 60 * 1000);
-        return () => clearInterval(interval);
-    }, []);
-
-    const getWeatherIcon = (code: number) => {
-        // WMO Weather interpretation codes (https://open-meteo.com/en/docs)
-        if (code === 0) return <FaSun style={{ color: '#f39c12' }} />;
-        if (code >= 1 && code <= 3) return <FaCloud style={{ color: '#95a5a6' }} />;
-        if (code >= 45 && code <= 48) return <FaSmog style={{ color: '#7f8c8d' }} />;
-        if (code >= 51 && code <= 67) return <FaCloudRain style={{ color: '#3498db' }} />;
-        if (code >= 71 && code <= 77) return <FaSnowflake style={{ color: '#ecf0f1' }} />;
-        if (code >= 80 && code <= 82) return <FaCloudRain style={{ color: '#3498db' }} />;
-        if (code >= 95 && code <= 99) return <FaBolt style={{ color: '#f1c40f' }} />;
-        return <FaSun />;
+  useEffect(() => {
+    const fetchWeather = async () => {
+      try {
+        // Maricá Coordinates
+        const res = await fetch(
+          'https://api.open-meteo.com/v1/forecast?latitude=-22.9194&longitude=-42.8186&current_weather=true'
+        );
+        const data = await res.json();
+        setWeather(data.current_weather);
+      } catch (error) {
+        console.error('Failed to fetch weather:', error);
+      } finally {
+        setLoading(false);
+      }
     };
 
-    if (loading || !weather) return null;
+    fetchWeather();
 
-    return (
-        <WidgetContainer>
-            <LocationName>Maricá, RJ</LocationName>
-            <MainInfo>
-                <IconWrapper>{getWeatherIcon(weather.weathercode)}</IconWrapper>
-                <Temp>{Math.round(weather.temperature)}°C</Temp>
-            </MainInfo>
-            <Details>
-                <DetailItem>
-                    <FaWind /> {weather.windspeed}km/h
-                </DetailItem>
-                {/* Humidity isn't in 'current_weather' by default in basic OpenMeteo call without extra params, 
+    // Refresh every 30 mins
+    const interval = setInterval(fetchWeather, 30 * 60 * 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const getWeatherIcon = (code: number) => {
+    // WMO Weather interpretation codes (https://open-meteo.com/en/docs)
+    if (code === 0) return <FaSun style={{ color: '#f39c12' }} />;
+    if (code >= 1 && code <= 3) return <FaCloud style={{ color: '#95a5a6' }} />;
+    if (code >= 45 && code <= 48) return <FaSmog style={{ color: '#7f8c8d' }} />;
+    if (code >= 51 && code <= 67) return <FaCloudRain style={{ color: '#3498db' }} />;
+    if (code >= 71 && code <= 77) return <FaSnowflake style={{ color: '#ecf0f1' }} />;
+    if (code >= 80 && code <= 82) return <FaCloudRain style={{ color: '#3498db' }} />;
+    if (code >= 95 && code <= 99) return <FaBolt style={{ color: '#f1c40f' }} />;
+    return <FaSun />;
+  };
+
+  if (loading || !weather) return null;
+
+  return (
+    <WidgetContainer>
+      <LocationName>Maricá, RJ</LocationName>
+      <MainInfo>
+        <IconWrapper>{getWeatherIcon(weather.weathercode)}</IconWrapper>
+        <Temp>{Math.round(weather.temperature)}°C</Temp>
+      </MainInfo>
+      <Details>
+        <DetailItem>
+          <FaWind /> {weather.windspeed}km/h
+        </DetailItem>
+        {/* Humidity isn't in 'current_weather' by default in basic OpenMeteo call without extra params, 
             keeping it simple or we could add hourly params. For now just wind is good for hiking. */}
-            </Details>
-        </WidgetContainer>
-    );
+      </Details>
+    </WidgetContainer>
+  );
 }

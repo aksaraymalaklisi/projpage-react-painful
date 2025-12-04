@@ -2,7 +2,7 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
 // https://vite.dev/config/
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   plugins: [react()],
   server: {
     port: 5173,
@@ -24,6 +24,7 @@ export default defineConfig({
       },
     },
   },
-  // Base path for GitHub Pages deployment (if needed)
-  // base: '/projpage-react-painful/',
-});
+  // Base path for GitHub Pages deployment
+  // Only apply in production to avoid breaking dev server
+  base: mode === 'production' ? '/projpage-react-painful/' : '/',
+}));
