@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { FaMapMarkedAlt, FaUsers, FaHeart, FaInfoCircle, FaBars, FaSignInAlt, FaUserPlus, FaTimes } from 'react-icons/fa';
 import styled from 'styled-components';
-import { useUser } from '../hooks/useUser';
+import { useAuth } from '../context/AuthContext';
 import { api } from '../services/api';
 import type { User } from '../types';
 
@@ -536,7 +536,7 @@ interface NavbarProps {
 export function Navbar({ onLoginClick }: NavbarProps) {
   const navigate = useNavigate();
   const location = useLocation();
-  const { user, logout, updateUser } = useUser();
+  const { user, logout, updateUser } = useAuth();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showAvatarMenu, setShowAvatarMenu] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -599,8 +599,8 @@ export function Navbar({ onLoginClick }: NavbarProps) {
           ...user.profile,
           picture: userData.profile?.picture
             ? (userData.profile.picture.startsWith('http')
-                ? userData.profile.picture
-                : `${import.meta.env.VITE_API_BASE_URL?.replace(/\/api\/?$/, '')}${userData.profile.picture.startsWith('/') ? '' : '/'}${userData.profile.picture}`)
+              ? userData.profile.picture
+              : `${import.meta.env.VITE_API_BASE_URL?.replace(/\/api\/?$/, '')}${userData.profile.picture.startsWith('/') ? '' : '/'}${userData.profile.picture}`)
             : user.profile?.picture,
         },
       };
@@ -697,8 +697,8 @@ export function Navbar({ onLoginClick }: NavbarProps) {
             </Link>
           </li> */}
           <li>
-            <Link 
-              to="/trilhas" 
+            <Link
+              to="/trilhas"
               onClick={() => setIsMobileMenuOpen(false)}
               className={location.pathname === '/trilhas' ? 'active' : ''}
             >
@@ -706,8 +706,8 @@ export function Navbar({ onLoginClick }: NavbarProps) {
             </Link>
           </li>
           <li>
-            <Link 
-              to="/community" 
+            <Link
+              to="/community"
               onClick={() => setIsMobileMenuOpen(false)}
               className={location.pathname === '/community' ? 'active' : ''}
             >
@@ -715,8 +715,8 @@ export function Navbar({ onLoginClick }: NavbarProps) {
             </Link>
           </li>
           <li>
-            <Link 
-              to="/favorites" 
+            <Link
+              to="/favorites"
               onClick={() => setIsMobileMenuOpen(false)}
               className={location.pathname === '/favorites' ? 'active' : ''}
             >
@@ -725,8 +725,8 @@ export function Navbar({ onLoginClick }: NavbarProps) {
           </li>
           {/* Contact button removed - it only scrolls, not a real page */}
           <li>
-            <Link 
-              to="/about" 
+            <Link
+              to="/about"
               onClick={() => setIsMobileMenuOpen(false)}
               className={location.pathname === '/about' ? 'active' : ''}
             >

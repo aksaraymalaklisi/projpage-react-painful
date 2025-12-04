@@ -20,6 +20,20 @@ export interface AuthTokens {
   refresh: string;
 }
 
+export interface LoginCredentials {
+  username: string;
+  password?: string;
+}
+
+export interface RegisterData {
+  username: string;
+  email: string;
+  password?: string;
+  name?: string;
+  phone?: string;
+  cpf?: string;
+}
+
 // Trail types
 export interface Trail {
   id: string | number;

@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { 
-  FaEnvelope, 
-  FaPhone, 
-  FaMapMarkerAlt, 
-  FaInstagram, 
-  FaFacebookF, 
-  FaTwitter, 
-  FaLinkedinIn, 
+import {
+  FaEnvelope,
+  FaPhone,
+  FaMapMarkerAlt,
+  FaInstagram,
+  FaFacebookF,
+  FaTwitter,
+  FaLinkedinIn,
   FaChevronRight,
   FaTree
 } from 'react-icons/fa';
@@ -16,7 +16,6 @@ const FooterSection = styled.footer`
   background: var(--verde-escuro);
   color: var(--branco);
   padding: 60px 0 20px;
-  margin-top: 60px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   font-size: 0.95rem;
 
