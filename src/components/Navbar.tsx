@@ -78,7 +78,7 @@ const Logo = styled(Link)`
     height: 50px;
     width: 50px;
     margin-right: 10px;
-    border-radius: 50%;
+    border-radius: 12px;
     object-fit: cover;
   }
 
@@ -110,7 +110,7 @@ const MobileLogo = styled(Link)`
     height: 40px;
     width: 40px;
     margin-right: 10px;
-    border-radius: 50%;
+    border-radius: 12px;
     object-fit: cover;
   }
 
@@ -645,7 +645,7 @@ export function Navbar({ onLoginClick }: NavbarProps) {
         {/* Mobile: Top row with logo and hamburger */}
         <TopRow>
           <MobileLogo to="/" onClick={() => setIsMobileMenuOpen(false)}>
-            <span>🌲</span>
+            <img src="/favicon.png" alt="Green Trail" />
             <span>Green Trail</span>
           </MobileLogo>
 
@@ -696,7 +696,7 @@ export function Navbar({ onLoginClick }: NavbarProps) {
 
         {/* Desktop: Logo (hidden on mobile) */}
         <Logo to="/" onClick={() => setIsMobileMenuOpen(false)}>
-          <span>🌲</span>
+          <img src="/favicon.png" alt="Green Trail" />
           <span>Green Trail</span>
         </Logo>
 

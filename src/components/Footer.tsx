@@ -8,8 +8,7 @@ import {
   FaFacebookF,
   FaTwitter,
   FaLinkedinIn,
-  FaChevronRight,
-  FaTree
+  FaChevronRight
 } from 'react-icons/fa';
 
 const FooterSection = styled.footer`
@@ -222,7 +221,7 @@ export function Footer() {
           {/* Column 1: Brand & Social */}
           <BrandColumn>
             <BrandLogo>
-              <FaTree /> Green Trail
+              <img src="/favicon.png" alt="Green Trail" style={{ width: '30px', height: '30px', borderRadius: '8px' }} /> Green Trail
             </BrandLogo>
             <FooterText>
               Conectando aventureiros à natureza. Explore as melhores trilhas da Região dos Lagos com segurança e preservação.
