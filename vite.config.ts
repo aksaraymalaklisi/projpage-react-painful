@@ -16,6 +16,12 @@ export default defineConfig({
         secure: false,
         rewrite: (path) => path.replace(/^\/api/, '/api'),
       },
+      '/ws': {
+        target: 'https://painful.aksaraymalaklisi.net',
+        ws: true,
+        changeOrigin: true,
+        secure: false,
+      },
     },
   },
   // Base path for GitHub Pages deployment (if needed)

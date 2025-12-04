@@ -10,6 +10,7 @@ import { Favorites } from './pages/Favorites';
 import { Community } from './pages/Community';
 import { AuthProvider } from './context/AuthContext';
 import { ScrollToTop } from './components/ScrollToTop';
+import { Chatbot } from './components/Chatbot';
 import './styles/index.css';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
       <BrowserRouter>
         <ScrollToTop />
         <Navbar />
+        <Chatbot />
         <Routes>
           <Route
             path="/"
