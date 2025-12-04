@@ -97,6 +97,13 @@ const FloatingNav = styled.div`
     box-shadow: 0 15px 40px rgba(0,0,0,0.2);
     transform: translateX(-50%) translateY(-2px);
   }
+
+  @media (max-width: 480px) {
+    padding: 10px 15px;
+    gap: 10px;
+    width: 95%;
+    bottom: 20px;
+  }
 `;
 
 // ... (existing styled components)

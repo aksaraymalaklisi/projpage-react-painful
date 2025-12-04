@@ -12,8 +12,18 @@ const Nav = styled.nav`
   padding: 15px 0;
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 1100; /* Increased to be above Chatbot (1000) */
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+`;
+
+const DesktopAvatarContainer = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    display: none !important;
+  }
 `;
 
 const NavContainer = styled.div`
@@ -147,6 +157,12 @@ const NavLinks = styled.ul<{ $isOpen: boolean }>`
   justify-content: center;
   align-items: center;
   min-width: 0;
+
+  @media (min-width: 769px) {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 
   li {
     margin: 0;
@@ -746,7 +762,7 @@ export function Navbar({ onLoginClick }: NavbarProps) {
             </SignupButton>
           </AuthButtons>
         ) : (
-          <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }} ref={avatarMenuRef}>
+          <DesktopAvatarContainer ref={avatarMenuRef}>
             <UserAvatar onClick={handleAvatarClick} title={user.name || 'Usuário'}>
               {user.profile?.picture ? (
                 <img src={user.profile.picture} alt="Avatar" referrerPolicy="no-referrer" />
@@ -769,7 +785,7 @@ export function Navbar({ onLoginClick }: NavbarProps) {
                 <button onClick={handleLogout}>Sair</button>
               </AvatarMenu>
             )}
-          </div>
+          </DesktopAvatarContainer>
         )}
       </NavContainer>
     </Nav>

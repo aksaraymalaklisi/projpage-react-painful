@@ -9,6 +9,7 @@ const HomeContainer = styled.main`
   width: 100%;
   position: relative;
   background-color: var(--bege);
+  overflow: hidden;
   
   /* Subtle Pattern Background */
   background-image: radial-gradient(var(--verde-medio) 1px, transparent 1px);
