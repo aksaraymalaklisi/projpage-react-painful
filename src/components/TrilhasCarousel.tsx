@@ -27,12 +27,12 @@ const GlassContainer = styled.div`
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
   border-radius: 40px;
-  padding: 60px 0; /* Removed side padding for full-width carousel */
-  border: 1px solid rgba(13, 175, 22, 0.3); /* Subtle green border */
+  padding: 60px 0;
+  border: 1px solid rgba(13, 175, 22, 0.3);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
   max-width: 1400px;
   margin: 0 auto;
-  overflow: hidden; /* Ensure carousel stays within rounded corners */
+  overflow: hidden;
   
   @media (max-width: 768px) {
     padding: 40px 0;

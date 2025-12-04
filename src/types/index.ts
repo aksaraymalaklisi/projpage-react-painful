@@ -47,19 +47,22 @@ export interface Trail {
   thumbnail?: string;
   difficulty?: string;
   dificuldade?: string;
+  is_favorite?: boolean;
   time?: string;
   duration?: string;
   tempo?: string;
   distance?: string;
   distancia?: string;
-  elevation?: string;
-  routetype?: 'ida' | 'ida_volta';
+  elevation?: number;
+  route_type?: 'ida' | 'ida_volta' | 'volta';
+  routetype?: 'ida' | 'ida_volta'; // Keep for backward compatibility if needed
   pos?: [number, number]; // [lat, lng]
   url?: string;
   gpx?: string;
   details?: string[];
   highlights?: string;
   destaques?: string;
+  images?: { id: number; image: string }[];
 }
 
 export interface TrailResponse {

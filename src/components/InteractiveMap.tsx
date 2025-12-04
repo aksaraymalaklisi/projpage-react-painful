@@ -43,7 +43,7 @@ const MapWrapper = styled.div`
   border-radius: 40px;
   overflow: hidden;
   box-shadow: 0 20px 50px rgba(0,0,0,0.15);
-  border: 1px solid rgba(13, 175, 22, 0.2);
+  border: 1px solid rgba(13, 175, 22, 0.3);
   position: relative;
 
   .leaflet-container {
@@ -347,6 +347,28 @@ const MapCentering = ({ center, hasGpx }: { center: [number, number], hasGpx: bo
     return null;
 };
 
+// Helper to format time (minutes to Xh Ym)
+const formatTime = (minutes?: number | string) => {
+    if (!minutes) return 'N/A';
+    const mins = Number(minutes);
+    if (isNaN(mins)) return minutes;
+
+    const h = Math.floor(mins / 60);
+    const m = mins % 60;
+
+    if (h > 0 && m > 0) return `${h}h ${m}min`;
+    if (h > 0) return `${h}h`;
+    return `${m}min`;
+};
+
+// Helper to format distance (meters to km)
+const formatDistance = (meters?: number | string) => {
+    if (!meters) return 'N/A';
+    const m = Number(meters);
+    if (isNaN(m)) return meters;
+    return `${(m / 1000).toFixed(1)}km`;
+};
+
 interface InteractiveMapProps {
     tracks: Track[];
 }
@@ -396,10 +418,13 @@ export function InteractiveMap({ tracks }: InteractiveMapProps) {
                     zoom={13}
                     scrollWheelZoom={false}
                 >
+
+
                     {/* CartoDB Voyager Tiles - Clean & Premium */}
                     <TileLayer
                         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
                         url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
+                        crossOrigin="anonymous"
                     />
 
                     {/* Render all track start markers */}
@@ -418,8 +443,8 @@ export function InteractiveMap({ tracks }: InteractiveMapProps) {
                                         <PopupTitle>{track.label || track.title}</PopupTitle>
                                         <PopupDesc>{track.description || track.descricao}</PopupDesc>
                                         <PopupStats>
-                                            <div><FaMountain /> <span>{track.distance}m</span></div>
-                                            <div><FaClock /> <span>{track.duration}min</span></div>
+                                            <div><FaMountain /> <span>{formatDistance(track.distance)}</span></div>
+                                            <div><FaClock /> <span>{formatTime(track.duration)}</span></div>
                                         </PopupStats>
                                     </PopupContent>
                                 </Popup>
@@ -454,7 +479,7 @@ export function InteractiveMap({ tracks }: InteractiveMapProps) {
                             </TrailDifficulty>
                             <span style={{ fontSize: '0.85rem', color: '#666', fontWeight: 500, display: 'flex', alignItems: 'center', gap: '4px' }}>
                                 <FaMountain size={12} color="var(--verde-medio)" />
-                                {selectedTrack?.distance ? `${selectedTrack.distance}m` : 'N/A'}
+                                {formatDistance(selectedTrack?.distance)}
                             </span>
                             {isGpxLoading && <LoadingSpinner />}
                         </div>

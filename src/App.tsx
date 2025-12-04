@@ -8,6 +8,8 @@ import { Register } from './pages/Register';
 import { About } from './pages/About';
 import { Favorites } from './pages/Favorites';
 import { Community } from './pages/Community';
+import Trilhas from './pages/Trilhas';
+import { TrackPage } from './pages/TrackPage';
 import { AuthProvider } from './context/AuthContext';
 import { ScrollToTop } from './components/ScrollToTop';
 import { Chatbot } from './components/Chatbot';
@@ -35,6 +37,8 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/favorites" element={<Favorites />} />
           <Route path="/community" element={<Community />} />
+          <Route path="/trilhas" element={<Trilhas />} />
+          <Route path="/trilhas/:id" element={<TrackPage />} />
         </Routes>
         <Footer />
       </BrowserRouter>
